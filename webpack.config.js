@@ -1,7 +1,10 @@
 // `webpack` command will pick up this config setup by default
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const MyPlugin = require("./src/myplugin");
+// const MyPlugin = require("./src/myplugin"); //내가 만든 플러그인 예시
+const webpack = require('webpack'); // 배너 정보를 아래에 직접 입력할때 사용
+const banner = require("./banner.js"); // 배너 정보를 따로 불러올때 사용
+
 
 //module.exports = {
 module.exports = (env) => {
@@ -27,7 +30,11 @@ module.exports = (env) => {
         },
         //devtool: 'cheap-eval-source-map',
         plugins: [
-            new MyPlugin(),
+            // new MyPlugin(),
+            /*new webpack.BannerPlugin({
+                banner: () => `빌드 날짜: ${new Date().toLocaleString()}`, // 배너 직접 입력 방식
+            }),*/
+            new webpack.BannerPlugin(banner), // 배너 불러오기 방식
             new HtmlWebpackPlugin({
                 // index.html 템플릿을 기반으로 빌드 결과물을 추가해줌
                 template: 'index.html',
