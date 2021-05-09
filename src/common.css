@@ -1,3 +1,15 @@
 h1 {
     color:#f00;
 }
+.icon {
+    width:100px;
+    height: 100px;
+    background-size: 100px 100px;
+    display: block;
+    background-image: url(icon.png);
+}
+
+body {
+    color: yellow;
+    background-image: url(bg.png);
+}
